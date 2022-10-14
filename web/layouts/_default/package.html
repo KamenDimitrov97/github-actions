@@ -1,0 +1,26 @@
+{{ define "main" }}
+
+{{- partial "taxonomy-links.html" . -}}
+
+{{ with $.Param "description" }}
+<div id="package-description">{{ . }}</div>
+{{ end }}
+{{- with $.Param "version" -}}
+<div class="package-version">
+  <span id="package-caption">Current version</span>: <span>
+    {{- with $.Param "versionurl" -}} <a {{ printf "href=%q" . | safeHTMLAttr  }}> {{- end -}}
+    {{- htmlEscape . -}}
+    {{- with $.Param "versionurl" -}}</a>{{- end -}}
+    </span>
+</div>
+{{- end -}}
+{{- with $.Param "projecturl" -}}
+<div class="package-project">Project Page: <a class="package-link highlight" {{printf "href=%q" . | safeHTMLAttr }}>{{ . }}</a></div>
+{{- end -}}
+{{- with $.Param "downloadurl" -}}
+<div class="package-download">Download: <a class="package-download highlight" {{printf "href=%q" . | safeHTMLAttr }}>{{ . }}</a></div>
+{{- end -}}
+
+{{- partial "history" . -}}
+
+{{- end -}}

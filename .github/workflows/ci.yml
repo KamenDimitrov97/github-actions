@@ -20,3 +20,4 @@ jobs:
         with:
           githubToken: ${{ secrets.PERSONAL_TOKEN }}
           siteDir: /github/workspace/quickstart
+          
